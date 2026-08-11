@@ -1,0 +1,29 @@
+{
+  "name": "devflow",
+  "version": "1.0.0",
+  "description": "Simple multi-stage CI/CD demo for IBM Q2D Project 21",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "node src/server.js",
+    "build": "node -e \"const fs=require('fs'); const path=require('path'); const dir='dist'; fs.rmSync(dir,{recursive:true,force:true}); fs.mkdirSync(dir,{recursive:true}); for (const item of ['src','public','package.json','package-lock.json']) { const srcPath=path.join(process.cwd(), item); const destPath=path.join(process.cwd(), dir, item); if (fs.existsSync(srcPath)) { fs.cpSync(srcPath, destPath, {recursive:true}); } }\"",
+    "test": "jest --runInBand"
+  },
+  "keywords": [
+    "express",
+    "jest",
+    "supertest",
+    "docker",
+    "ci-cd"
+  ],
+  "author": "IBM Q2D Participant",
+  "license": "MIT",
+  "dependencies": {
+    "dotenv": "^16.6.1",
+    "express": "^4.19.2"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0",
+    "supertest": "^7.0.0"
+  }
+}
