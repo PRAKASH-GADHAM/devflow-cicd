@@ -69,7 +69,8 @@ jobs:
         run: |
           set -e
           OWNER=$(echo "${{ github.repository_owner }}" | tr '[:upper:]' '[:lower:]')
-          echo "IMAGE_NAME=ghcr.io/${OWNER}/devflow:latest" >> "$GITHUB_ENV"
+          IMAGE_NAME="ghcr.io/${OWNER}/devflow:latest"
+          echo "IMAGE_NAME=${IMAGE_NAME}" >> "$GITHUB_ENV"
           docker build -t "$IMAGE_NAME" .
 
       - name: Run container health check
